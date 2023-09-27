@@ -1,0 +1,40 @@
+<div class="container">
+  <div
+    class="swipeable"
+    ngxSwipeablePanel
+    [swipeHeightWhenClosed]="36"
+    [snapTreshold]="{ top: 20, center: 20, bottom: 20 }"
+    [cssTransition]="'top 250ms ease 0s'"
+    [class.squaredBorder]="swipeablePanel?.position === top"
+  >
+    <div class="swipeable-content">
+      <div class="swipeable-handler"></div>
+      <div class="todos-container">
+        <div class="todos-title">TODO List</div>
+        <button
+          class="close-todos"
+          *ngIf="!swipeablePanel?.canSnapToBottom"
+          (click)="close()"
+        >
+          X
+        </button>
+        <ul class="todos">
+          <li *ngFor="let todo of todos" class="todo">
+            {{ todo }}
+          </li>
+        </ul>
+        <div class="todos-actions">
+          <input
+            class="prompt"
+            type="text"
+            maxlength="200"
+            [formControl]="todoControl"
+            placeholder="New todo..."
+            (keyup.enter)="addTodo()"
+          />
+          <button (click)="addTodo()">Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
