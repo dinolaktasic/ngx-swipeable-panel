@@ -42,7 +42,6 @@
   "namedInputs": {
     "sharedGlobals": [
       "{workspaceRoot}/nx.json",
-      "{workspaceRoot}/babel.config.json",
       "{workspaceRoot}/tsconfig.base.json"
     ],
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
