@@ -9,7 +9,6 @@ import {
   selector: 'app-nx-swipeable-panel-demo',
   templateUrl: './swipeable-panel-demo.component.html',
   styleUrls: ['./swipeable-panel-demo.component.scss'],
-  encapsulation: ViewEncapsulation.None,
 })
 export class NgxSwipeablePanelDemoComponent {
   readonly top = SwipeablePanelSnap.Top;

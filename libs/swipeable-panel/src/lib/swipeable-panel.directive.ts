@@ -176,7 +176,7 @@ export class SwipeablePanelDirective implements OnInit, OnDestroy {
     )
       return;
 
-    this.setPosition(event.clientY);
+    this.setPosition(currentPosition);
     this.swipping.emit();
   }
 
