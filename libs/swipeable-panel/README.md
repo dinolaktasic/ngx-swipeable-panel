@@ -2,4 +2,4 @@
 
 Swipeable panel for Angular
 
-<img src="https://raw.githubusercontent.com/dinolaktasic/ngx-swipeable-panel/main/apps/demo/src/assets/images/swipeable-panel.png?token=GHSAT0AAAAAACGV4UXFO76QCLPH53LMDZD4ZIYAGXQ">
+![ngx-swipeable-panel](https://github.com/dinolaktasic/ngx-swipeable-panel/blob/main/apps/demo/src/assets/images/swipeable-panel.png?raw=true)

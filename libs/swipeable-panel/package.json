@@ -1,6 +1,8 @@
 {
   "name": "ngx-swipeable-panel",
-  "version": "1.0.0",
+  "version": "1.0.2",
+  "license": "MIT",
+  "author": "Dino Laktasic <laktasic@gmail.com>",
   "peerDependencies": {
     "@angular/common": "^16.2.0",
     "@angular/core": "^16.2.0"
