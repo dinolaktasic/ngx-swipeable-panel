@@ -107,7 +107,7 @@ describe('SwipeablePanelDirective', () => {
       .mockImplementation(() => 100);
 
     jest
-      .spyOn(directive, 'currentPositionPercentage', 'get')
+      .spyOn(directive, 'getCurrentPositionPercentage')
       .mockImplementation(() => SwipeablePanelSnap.Bottom);
 
     directive.setPosition(SwipeablePanelSnap.Bottom);
@@ -122,7 +122,7 @@ describe('SwipeablePanelDirective', () => {
       .mockImplementation(() => 100);
 
     jest
-      .spyOn(directive, 'currentPositionPercentage', 'get')
+      .spyOn(directive, 'getCurrentPositionPercentage')
       .mockImplementation(() => SwipeablePanelSnap.Bottom);
 
     directive.snapToPosition(SwipeablePanelSnap.Bottom);
@@ -139,7 +139,7 @@ describe('SwipeablePanelDirective', () => {
       .mockImplementation(() => 100);
 
     jest
-      .spyOn(directive, 'currentPositionPercentage', 'get')
+      .spyOn(directive, 'getCurrentPositionPercentage')
       .mockImplementation(() => 70);
 
     directive.setPosition(70);
@@ -157,7 +157,7 @@ describe('SwipeablePanelDirective', () => {
       value: number | SwipeablePanelSnapPosition,
     ) =>
       jest
-        .spyOn(directive, 'currentPositionPercentage', 'get')
+        .spyOn(directive, 'getCurrentPositionPercentage')
         .mockImplementation(() => value);
 
     directive.snapTreshold = { top: 25, center: 24, bottom: 25 };
@@ -199,21 +199,21 @@ describe('SwipeablePanelDirective', () => {
       .mockImplementation(() => 100);
 
     jest
-      .spyOn(directive, 'currentPositionPercentage', 'get')
+      .spyOn(directive, 'getCurrentPositionPercentage')
       .mockImplementation(() => 0);
 
     directive.setPosition(0);
     expect(directive.position).toBe(0);
 
     jest
-      .spyOn(directive, 'currentPositionPercentage', 'get')
+      .spyOn(directive, 'getCurrentPositionPercentage')
       .mockImplementation(() => 75);
 
     directive.setPosition(75);
     expect(directive.position).toBe(75);
 
     jest
-      .spyOn(directive, 'currentPositionPercentage', 'get')
+      .spyOn(directive, 'getCurrentPositionPercentage')
       .mockImplementation(() => 100);
 
     directive.setPosition(100);
@@ -222,13 +222,13 @@ describe('SwipeablePanelDirective', () => {
 
   test('should not set position', () => {
     jest
-      .spyOn(directive, 'currentPositionPercentage', 'get')
+      .spyOn(directive, 'getCurrentPositionPercentage')
       .mockImplementation(() => -1);
     directive.setPosition(75);
     expect(directive.position).not.toEqual(75);
 
     jest
-      .spyOn(directive, 'currentPositionPercentage', 'get')
+      .spyOn(directive, 'getCurrentPositionPercentage')
       .mockImplementation(() => 101);
     directive.setPosition(75);
     expect(directive.position).not.toEqual(75);
@@ -238,7 +238,7 @@ describe('SwipeablePanelDirective', () => {
     directive.snapTreshold = { top: 25 };
 
     jest
-      .spyOn(directive, 'currentPositionPercentage', 'get')
+      .spyOn(directive, 'getCurrentPositionPercentage')
       .mockImplementation(() => 25);
 
     expect(directive.canSnapToTop).toBe(true);
@@ -253,7 +253,7 @@ describe('SwipeablePanelDirective', () => {
     directive.position = 25;
 
     jest
-      .spyOn(directive, 'currentPositionPercentage', 'get')
+      .spyOn(directive, 'getCurrentPositionPercentage')
       .mockImplementation(() => 25);
 
     expect(directive.canSnapToCenter).toBe(true);
@@ -266,7 +266,7 @@ describe('SwipeablePanelDirective', () => {
     directive.position = 75;
 
     jest
-      .spyOn(directive, 'currentPositionPercentage', 'get')
+      .spyOn(directive, 'getCurrentPositionPercentage')
       .mockImplementation(() => 75);
 
     directive.snapToPosition(75);
@@ -283,7 +283,7 @@ describe('SwipeablePanelDirective', () => {
       .mockImplementation(() => 100);
 
     jest
-      .spyOn(directive, 'currentPositionPercentage', 'get')
+      .spyOn(directive, 'getCurrentPositionPercentage')
       .mockImplementation(() => 75);
 
     expect(directive.canSnapToBottom).toBe(true);
@@ -302,7 +302,7 @@ describe('SwipeablePanelDirective', () => {
     // snap to top
     directive.position = 25;
     jest
-      .spyOn(directive, 'currentPositionPercentage', 'get')
+      .spyOn(directive, 'getCurrentPositionPercentage')
       .mockImplementation(() => 25);
 
     expect(directive.canSnapToTop).toBe(true);
@@ -317,7 +317,7 @@ describe('SwipeablePanelDirective', () => {
     // snap to center (upper part)
     directive.position = 26;
     jest
-      .spyOn(directive, 'currentPositionPercentage', 'get')
+      .spyOn(directive, 'getCurrentPositionPercentage')
       .mockImplementation(() => 26);
 
     expect(directive.canSnapToTop).toBe(false);
@@ -332,7 +332,7 @@ describe('SwipeablePanelDirective', () => {
     // snap to center (lower part)
     directive.position = 74;
     jest
-      .spyOn(directive, 'currentPositionPercentage', 'get')
+      .spyOn(directive, 'getCurrentPositionPercentage')
       .mockImplementation(() => 74);
 
     expect(directive.canSnapToTop).toBe(false);
@@ -347,7 +347,7 @@ describe('SwipeablePanelDirective', () => {
     // snap to bottom
     directive.position = 75;
     jest
-      .spyOn(directive, 'currentPositionPercentage', 'get')
+      .spyOn(directive, 'getCurrentPositionPercentage')
       .mockImplementation(() => 75);
 
     expect(directive.canSnapToTop).toBe(false);
