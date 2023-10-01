@@ -237,6 +237,11 @@ export class SwipeablePanelDirective implements OnInit, OnDestroy {
   snapToPosition(value: number): void {
     if (!this.enabled) return;
 
+    if (isNil(this.snapTreshold)) {
+      this.setPosition(value);
+      return;
+    }
+
     this.currentPosition = value;
     const previousPosition = this.position;
 
@@ -258,6 +263,17 @@ export class SwipeablePanelDirective implements OnInit, OnDestroy {
     }
   }
 
+  getCurrentPositionPercentage(): number {
+    return (
+      100 -
+      Math.round(
+        ((this.swipeablePanelParentHeight - this.currentPosition) /
+          this.swipeablePanelParentHeight) *
+          100,
+      )
+    );
+  }
+
   private canSwipeByTouchOrMouse(currentPosition: number): boolean {
     return (
       this.enabled &&
@@ -272,17 +288,6 @@ export class SwipeablePanelDirective implements OnInit, OnDestroy {
   private deactivateSwipe(): void {
     this.startPosition = undefined;
     this.swipeInitTime = undefined;
-  }
-
-  private getCurrentPositionPercentage(): number {
-    return (
-      100 -
-      Math.round(
-        ((this.swipeablePanelParentHeight - this.currentPosition) /
-          this.swipeablePanelParentHeight) *
-          100,
-      )
-    );
   }
 
   private getClosedPosition(): number {
