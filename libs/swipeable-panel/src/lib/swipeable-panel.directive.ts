@@ -54,17 +54,6 @@ export class SwipeablePanelDirective implements OnInit, OnDestroy {
     return this.swipeablePanel.offsetParent?.clientHeight!;
   }
 
-  get currentPositionPercentage(): number {
-    return (
-      100 -
-      Math.round(
-        ((this.swipeablePanelParentHeight - this.currentPosition) /
-          this.swipeablePanelParentHeight) *
-          100,
-      )
-    );
-  }
-
   @Input()
   set snapTreshold(treshold: SwipeablePanelSnapTreshold | undefined) {
     this._treshold = treshold;
@@ -114,17 +103,18 @@ export class SwipeablePanelDirective implements OnInit, OnDestroy {
   get canSnapToTop() {
     return (
       this.position !== SwipeablePanelSnap.Top &&
-      this.currentPositionPercentage <=
+      this.getCurrentPositionPercentage() <=
         SwipeablePanelSnap.Top + (this.snapTreshold?.top ?? 0)
     );
   }
 
   get canSnapToCenter() {
+    const currentPositionPercentage = this.getCurrentPositionPercentage();
     return (
       this.position !== SwipeablePanelSnap.Center &&
-      this.currentPositionPercentage >=
+      currentPositionPercentage >=
         SwipeablePanelSnap.Center - (this.snapTreshold?.center ?? 0) &&
-      this.currentPositionPercentage <=
+      currentPositionPercentage <=
         SwipeablePanelSnap.Center + (this.snapTreshold?.center ?? 0)
     );
   }
@@ -136,12 +126,12 @@ export class SwipeablePanelDirective implements OnInit, OnDestroy {
       (this.position !== SwipeablePanelSnap.Bottom &&
         bottomWithOffset === SwipeablePanelSnap.Bottom) ||
       this.position === bottomWithOffset ||
-      this.currentPositionPercentage >= bottomWithOffset
+      this.getCurrentPositionPercentage() >= bottomWithOffset
     );
   }
 
   get canUpdatePosition() {
-    return canUpdatePosition(this.currentPositionPercentage);
+    return canUpdatePosition(this.getCurrentPositionPercentage());
   }
 
   ngOnInit(): void {
@@ -238,7 +228,7 @@ export class SwipeablePanelDirective implements OnInit, OnDestroy {
 
     if (!this.canUpdatePosition) return;
 
-    this.position = this.currentPositionPercentage;
+    this.position = this.getCurrentPositionPercentage();
     this._closed = this.position >= this.getClosedPosition();
 
     this.positionChange.emit({ value: this.position, snapped: false });
@@ -282,6 +272,17 @@ export class SwipeablePanelDirective implements OnInit, OnDestroy {
   private deactivateSwipe(): void {
     this.startPosition = undefined;
     this.swipeInitTime = undefined;
+  }
+
+  private getCurrentPositionPercentage(): number {
+    return (
+      100 -
+      Math.round(
+        ((this.swipeablePanelParentHeight - this.currentPosition) /
+          this.swipeablePanelParentHeight) *
+          100,
+      )
+    );
   }
 
   private getClosedPosition(): number {
