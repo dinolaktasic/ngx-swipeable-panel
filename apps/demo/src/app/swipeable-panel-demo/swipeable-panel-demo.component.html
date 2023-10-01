@@ -13,7 +13,7 @@
         <div class="todos-title">TODO List</div>
         <button
           class="close-todos"
-          *ngIf="!swipeablePanel?.canSnapToBottom"
+          *ngIf="!swipeablePanel?.isClosed"
           (click)="close()"
         >
           X
