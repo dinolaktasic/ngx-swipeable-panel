@@ -116,6 +116,8 @@ close()                                       // Closes swipeable panel.
 setPosition(value: number): void              // Sets position of swipeable panel (offset from the top of parent container in '%').
 
 snapToPosition(value: number): void           // Tries to snap swipeable panel to position (offset from the top of parent container in '%').
+
+getCurrentPositionPercentage(): number        // Gets current position in '%'.
 ```
 
 This functions can be accessed through the directive reference.
