@@ -2,15 +2,21 @@
 
 Swipeable panel for Angular
 
+## Demo
+
+Check out [demo](https://stackblitz.com/edit/stackblitz-starters-pmfxqg-stackblitz-io?file=src%2Fmain.ts)
+
 ![ngx-swipeable-panel](https://github.com/dinolaktasic/ngx-swipeable-panel/blob/main/apps/demo/src/assets/images/swipeable-panel.png?raw=true)
 
-### Installing and usage
+## Install
 
 ```bash
 npm install ngx-swipeable-panel --save
 ```
 
-#### Importing the module for your app:
+## Usage
+
+#### Importing library
 
 ```typescript
 import { SwipeablePanelModule } from 'ngx-swipeable-panel';
